@@ -5,7 +5,7 @@
 <p> - Arya Javas Fatih ( Frontend ) </p>
 <p> - Muhamad Agus ( Frontend ) </p>
 <p> - Muhammad Fikri Maulana ( Frontend ) </p>
-<p> - Sandra Armayanti ( Frontend ) </p>
+<p> - Sandra Armayanti ( Frontend dan UI/UX Design ) </p>
 
 ## Demo
 <p>
