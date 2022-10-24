@@ -4,18 +4,19 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port=8080 --host",
-    "build": "vite build",
-    "serve": "vite preview --port=8080 --host"
+    "start": "vite --port=8080 --host",
+    "build": "vite build"
   },
   "dependencies": {
     "bootstrap": "^5.2.2",
-    "leaflet": "^1.9.2",
+    "leaflet": "^1.7.1",
+    "leaflet.markercluster": "^1.5.3",
     "primeicons": "^6.0.1",
     "primereact": "^8.6.1",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-leaflet": "^4.1.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "react-leaflet": "^3.2.5",
+    "react-leaflet-markercluster": "^3.0.0-rc1",
     "react-router-dom": "^6.4.2"
   },
   "devDependencies": {
