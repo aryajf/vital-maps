@@ -9,7 +9,7 @@ const user = require('../controllers/user')
 
 // CALL MIDDLEWARE
 const checkAuth = require('../middleware/checkAuth');
-const {Admin, Member} = require('../middleware/Roles');
+const {Admin} = require('../middleware/Roles');
 
 // USER MODEL & BSCRYPT
 const {User} = require('../models')
@@ -23,7 +23,7 @@ router.get('/', async function(req, res) {
     }
 
     await User.create({
-        name: 'Herman Tohari',
+        name: 'Admin Vital Maps',
         email: email,
         password: bcrypt.hashSync('12345', 10, null),
         role: 'Admin',
