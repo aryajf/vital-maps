@@ -1,23 +1,20 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-// var logger = require('morgan');
+const express = require('express');
+const cors = require("cors")
+const path = require('path');
+const cookieParser = require('cookie-parser');
 
-var routes = require('./routes/index');
+const routes = require('./routes/index');
 
-var app = express();
+const app = express();
 
-// app.use(logger('dev'));
+app.use(cors({
+    credentials: true, origin: ['http://localhost:3000', 'http://localhost:8080'],
+    methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
+}))
 app.use(express.json());
 app.use(express.urlencoded({
     extended: false
-}));
-app.use((req, res, next) => {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, PATCH, DELETE')
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-    next()
-});
+}))
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 

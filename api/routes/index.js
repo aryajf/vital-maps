@@ -16,7 +16,7 @@ const {User} = require('../models')
 const bcrypt = require('bcrypt')
 
 router.get('/', async function(req, res) {
-    let email = 'mantohari70@gmail.com'
+    let email = 'admin@gmail.com'
     let user = await User.findOne({where: {email: email}})
     if(user){
         res.status(500).json("Email sudah digunakan")

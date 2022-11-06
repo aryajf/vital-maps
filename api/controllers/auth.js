@@ -79,10 +79,6 @@ module.exports = {
     },
     profile: async (req, res) => {
         let user = await User.findOne({
-            include: [{
-                model: Document,
-                as: 'document'
-            }],
             where: {
                 email: req.decoded.email
             }
@@ -243,10 +239,6 @@ module.exports = {
     },
     updateProfile: async (req, res) => {
         let user = await User.findOne({
-            include: [{
-                model: Document,
-                as: 'document'
-            }],
             where: {
                 email: req.decoded.email
             }

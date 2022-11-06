@@ -1,29 +1,30 @@
-// import React from 'react'
-// import ReactDOM from 'react-dom'
-// import App from "./App";
+import React from "react";
+import ReactDOM from "react-dom";
+import {
+  BrowserRouter as Router
+} from "react-router-dom";
+import { Provider } from "react-redux";
+import { store } from './app/store'
 
-// ReactDOM.createRoot(document.getElementById('root')).render(
-  //   <React.StrictMode>
-  //     <Router>
-  //       <App/>
-  //     </Router>
-  //   </React.StrictMode>
-  // )
-  
-  import React from "react";
-  import ReactDOM from "react-dom";
-  import {
-    BrowserRouter as Router
-  } from "react-router-dom";
-  
 import App from "./App";
+
+// Bootstrap
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap"
+import "@popperjs/core"
+
+// AXIOS
+import axios from 'axios'
+axios.defaults.withCredentials = true
 
 const rootElement = document.getElementById("root");
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <App />
+      </Router>
+    </Provider>
   </React.StrictMode>,
   rootElement
 );
