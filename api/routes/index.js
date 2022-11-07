@@ -9,22 +9,21 @@ const user = require('../controllers/user')
 
 // CALL MIDDLEWARE
 const checkAuth = require('../middleware/checkAuth');
-const {Admin, Member} = require('../middleware/Roles');
+const {Admin} = require('../middleware/Roles');
 
 // USER MODEL & BSCRYPT
 const {User} = require('../models')
 const bcrypt = require('bcrypt')
 
 router.get('/', async function(req, res) {
-    let email = 'mantohari70@gmail.com'
+    let email = 'admin@gmail.com'
     let user = await User.findOne({where: {email: email}})
     if(user){
-        res.status(500).json("Email sudah digunakan")
-        return
+        return res.redirect(process.env.HOME_URL)
     }
 
     await User.create({
-        name: 'Herman Tohari',
+        name: 'Admin Vital Maps',
         email: email,
         password: bcrypt.hashSync('12345', 10, null),
         role: 'Admin',
