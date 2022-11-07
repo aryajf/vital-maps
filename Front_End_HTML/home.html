@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+    <html lang="en">
+        <head>
+            <meta charset="UTF-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+            <meta name="theme-color" content="#3D5AF1" />
+            <title>Home | Vital Maps</title>
+            <link rel="stylesheet" href="./Assets/Styles/home.css">
+            <link rel="icon" href="./Assets/Images/Maps_Point-removebg-preview.png">
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+        </head>
+    <body>
+        <section class="home h-100 w-100" style="box-sizing: border-box; background-color: #FFFFFF">
+            <div class="container-fluid mx-auto p-0  position-relative header-2-3">
+                <nav class="navbar navbar-expand-lg navbar-dark">
+                    <a href="#">
+                        <img style="margin-right:1.5rem" src="./Assets/Images/Logo Vital Maps.png" width="110" height="55" alt="Logo Vital Maps">
+                    </a>
+                    <img class="divider" src="./Assets/Images/Vector 1.png" alt="">
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="modal" data-bs-target="#targetModal-item">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="modal-item modal fade" id="targetModal-item" tabindex="-1" role="dialog" aria-labelledby="targetModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content border-0" style="background-color: #FFFFFF;">
+                            <div class="modal-header border-0" style="padding:	2rem; padding-bottom: 0;">
+                                <a class="modal-title" id="targetModalLabel">
+                                <img style="margin-top:0.5rem" src="./Assets/Images/Logo Vital Maps.png" width="110" height="55" alt="Logo Vital Maps">
+                                </a>
+                                <button type="button" class="close btn-close text-black-50" data-bs-dismiss="modal" aria-label="Close">
+                                </button>
+                            </div>
+                            <div class="modal-body" style="padding:	2rem; padding-top: 0; padding-bottom: 0;">
+                                <ul class="navbar-nav responsive me-auto mt-2 mt-lg-0">
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="#" style="color: #3D5AF1;">Home</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Contact</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">Maps</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" href="#">About Us</a>
+                                </li>
+                                </ul>
+                            </div>
+                            <div class="modal-footer border-0 gap-3" style="padding:	2rem; padding-top: 0.75rem">
+                                <button class="btn btn-fill border-0 text-white">Get Started</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="collapse navbar-collapse" id="navbarTogglerDemo" style="margin-left: 0.75rem;">
+                        <ul class="navbar-nav me-auto mt-2 mt-lg-0">
+                            <li class="nav-item active">
+                                <a class="nav-link" href="#" style="color: #3D5AF1;">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Contact</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">Maps</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">About Us</a>
+                            </li>
+                        </ul>
+                        <div class="gap-3">
+                            <button class="btn btn-fill text-white border-0">Get Started</button>
+                        </div>
+                    </div>
+                </nav>
+
+                <div>
+                    <div class="mx-auto d-flex flex-lg-row flex-column hero">
+                        <!-- Left Column -->
+                        <div class="left-column d-flex flex-row mb-3 flex-column align-items-lg-start text-lg-start align-items-center text-center">
+                            <h1 class="headline">We will help you find best
+                                hospital you need for your
+                                health problems.</h1>
+                            <p class="text-caption">Good health is a state of mental, physical and social well
+                                and it does not just mean the absence of disease.</p>
+                        </div>
+
+                        <!-- Right Column -->
+                        <div class="right-column">
+                            <img class="cover" src="./Assets/Images/cover.png" width="670" height="700" alt="">
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+        </section> 
+
+        <section class="section-2 h-100 w-100" style="box-sizing: border-box; background-color: #E6EBFF">
+            <div class="container-fluid mx-auto p-0  position-relative maps">
+                <div>
+                    <div class="mx-auto d-flex flex-lg-row flex-column heros">
+                    <!-- Left Column -->
+                    <div class="left-column d-flex flex-row mb-3  align-items-lg-start text-lg-start justify-content-center text-center">
+                        <img class="mapsicle" src="./Assets/Images/Mapsicle Map.png" width="734" height="700" alt="">
+                    </div>
+
+                    <!-- Right Column -->
+                    <div class="right-column d-flex flex-row mb-3 flex-column align-items-lg-start text-lg-start justify-content-center text-center">
+                        <h2 class="headline">Try to find hospital near
+                            your current location now.</h2>
+                        <p class="text-caption">Find the best hospital around your location
+                            that provides the facilities you need.</p>
+                    </div>
+
+                </div>
+                </div>
+                
+            </div>
+        </section>
+
+        <footer>
+            <div class="d-flex justify-content-center flex-column text-center footer">
+                <h3>We provide helpful services for you.</h3>
+                <p>Find the best hospital around your location
+                that provides the facilities you need.</p>
+            </div>
+        </footer>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    </body>
+</html>

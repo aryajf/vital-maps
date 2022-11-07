@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: Poppins, sans-serif;
+}
+
+.content-3-5 .btn:focus,
+.content-3-5 .btn:active {
+    outline: none !important;
+}
+
+.content-3-5 .width-right {
+    width: 0%;
+}
+
+.content-3-5 .width-left {
+    width: 100%;
+    height: 100%;
+    padding: 8rem 2rem;
+    background-color: #FFFFFF;
+}
+
+.content-3-5 .centered {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.content-3-5 .left {
+    width: 100%;
+}
+
+.content-3-5 .logo {
+    position: absolute;
+    left: 30px;
+    top: 30px;
+}
+
+.content-3-5 .title-text {
+    font-weight: 600;
+    font-size: 32px;
+    margin-bottom: 0.5rem;
+    color: #373737;
+}
+
+.content-3-5 .caption-text {
+    font-weight: 400;
+    font-size: 16px;
+    color: #ADADAD;
+}
+
+.content-3-5 form {
+    width: 360px;
+    margin-top: 30px
+}
+
+.content-3-5 .input-label {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #373737;
+}
+
+.content-3-5 .input {
+    height: 45px;
+    background: #FFFFFF;
+    color: #ADADAD;
+    border: 1px solid #ADADAD;
+    border-radius: 6px;
+}
+
+.content-3-5 a {
+    text-decoration: none;
+    color: #3D5AF1;
+}
+
+.content-3-5 .mb-5 {
+    margin-bottom: 20px!important;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 19px;
+}
+
+.content-3-5 .mb-5:hover {
+    color: #173aee;
+    transition: 0.5s;
+}
+
+.content-3-5 .btn-fill {
+    padding: 10px 150px;
+    background: #3D5AF1;
+    border-radius: 6px;
+    font-weight: 500;
+    font-size: 16px;
+    transition: 0.5s;
+}
+
+.content-3-5 .btn-fill:hover {
+    background: #173aee;
+    transition: 0.5s;
+}
+
+@media (max-width: 576px) {
+    .content-3-5 form {
+        width: auto;
+    }
+
+    .content-3-5 .btn-fill {
+        width: auto;
+        padding: 10px 100px;
+        font-size: 14px;
+    }
+}
+
+@media (min-width: 576px) {
+    .content-3-5 .width-left {
+        padding: 8rem 4rem;
+    }
+
+    .content-3-5 .left {
+        width: 58.333333%;
+    }
+}
+
+@media (min-width: 768px) {
+    .content-3-5 .left {
+        width: 66.666667%;
+    }
+}
+
+@media (min-width: 992px) {
+    .content-3-5 .width-right {
+        width: 48%;
+        background-color: #3D5AF1;
+    }
+
+    .content-3-5 .width-left {
+        width: 52%;
+    }
+
+    .content-3-5 .left {
+        width: 75%;
+    }
+}
+
+@media (min-width: 1200px) {
+    .content-3-5 .left {
+        width: 58.333333%;
+    }
+}
