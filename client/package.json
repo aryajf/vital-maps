@@ -17,24 +17,12 @@
     "primeicons": "^6.0.1",
     "primereact": "^8.6.1",
     "react": "^17.0.1",
-<<<<<<< HEAD
-    "react-bootstrap": "^2.6.0",
     "react-dom": "^17.0.1",
-    "react-head": "^3.4.2",
     "react-icons": "^4.6.0",
     "react-leaflet": "^3.2.5",
     "react-leaflet-markercluster": "^3.0.0-rc1",
     "react-redux": "^8.0.4",
-    "react-reveal": "^1.2.2",
-    "react-router-dom": "^6.4.2",
-    "react-scrollchor": "^7.0.2"
-=======
-    "react-dom": "^17.0.1",
-    "react-leaflet": "^3.2.5",
-    "react-leaflet-markercluster": "^3.0.0-rc1",
-    "react-redux": "^8.0.4",
     "react-router-dom": "^6.4.2"
->>>>>>> 319fb0d01e0d17ee6c3668a42c37a518388119d2
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.0",
