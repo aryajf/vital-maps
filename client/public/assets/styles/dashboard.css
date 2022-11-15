@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    font-family: Poppins, sans-serif;
+}
+
+.dashboard {
+    min-height: 90vh;
+}
+
+.sidebar {
+    height: 100%;
+    width: 15em;
+    position: fixed;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    background-color: #3D5AF1;
+    box-shadow: 4px 0px 6px rgba(0, 0, 0, 0.25);
+    border-radius: 0px 10px 10px 0px;
+    overflow: hidden;
+}
+
+.sidebar .profile {
+    padding: 15px 10px;
+}
+
+.sidebar p {
+    padding-top: 10px;
+    color: #FFFFFF;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 22px;
+}
+
+.sidebar a {
+    padding: 8px 35px;
+    display: block;
+    margin-top: 1em;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 25px;
+    letter-spacing: 0.05em;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background: rgba(173, 173, 173, 0.3);
+    color: #FFFFFF;
+    border-radius: 6px;
+}
+
+.sidebar .active {
+    background: rgba(173, 173, 173, 0.3);
+    border-radius: 6px;
+}
+
+.sidebar .icon {
+    padding: 0.5em;
+}
+
+.sidebar .logout {
+    position: absolute;
+    top: 560px;
+    width: 85%;
+}
+
+.dashboard .content {
+    position: absolute;
+    left: 258px;
+    top: 30px;
+    width: 1090px;
+    height: auto;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow-x: auto;
+}
+
+.dashboard .content .content-title {
+    padding-top: 20px;
+    padding-left: 20px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 33px;
+    letter-spacing: 0.05em;
+    color: #373737;
+}
+
+table {
+    padding-bottom: 20px;
+}
+
+table thead {
+    background-color: #3D5AF1;
+    color: #ffffff;
+}
+
+table tbody th {
+    padding: 10px;
+    font-weight: 100;
+}
+
+table tbody td {
+    font-size: 14px;
+}
