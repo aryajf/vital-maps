@@ -1,28 +1,69 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import '../assets/scss/Home.scss';
+import { Button } from './Button';
+import '../assets/scss/Navbar.scss';
 
-function Navbar() {
-  const [sidebar, setSidebar] = useState(false);
-  const showSidebar = () => setSidebar(!sidebar);
+const Navbar = () => {
+  const [isMenuToggled, setIsMenuToggled] = useState(false);
+  const [button, setButton] = useState(true);
+
+  const toggleMenu = () => {
+    setIsMenuToggled(!isMenuToggled);
+  };
+
+  const closeMobileMenu = () => {
+    setIsMenuToggled(false);
+  };
+
+  const showButton = () => {
+    if (window.innerWidth <= 960) {
+      setButton(false);
+    } else {
+      setButton(true);
+    }
+  };
+
+  useEffect(() => {
+    showButton();
+  }, []);
+
+  window.addEventListener('resize', showButton);
 
   return (
-    <div>
-      <nav className={sidebar ? 'navbar__menu active' : 'navbar__menu'}>
-        <ul className="navbar__menu__list" onClick={showSidebar}>
-          <li className="navbar__menu__list-items active">
-            <Link to="/">Home</Link>
-          </li>
-          <li className="navbar__menu__list-items">
-            <Link to="/maps">Maps</Link>
-          </li>
-          <li className="navbar__menu__list-items">
-            <Link to="/login">Login</Link>
-          </li>
-        </ul>
+    <>
+      <nav className="navbar navbar-dark">
+        <a href="#">
+          <img style={{ marginRight: '1.5rem' }} src="./Assets/Images/Logo Vital Maps.png" width={20} height={5} alt="Logo Vital Maps" />
+        </a>
+        <img className="divider" src="./Assets/Images/Vector 1.png" alt="" />
+        <button className="navbar-toggler border-0" type="button" data-bs-toggle="modal" data-bs-target="#targetModal-item">
+          <span className="navbar-toggler-icon" />
+        </button>
+        <div className="navbar-container">
+          <div className="menu-icon" onClick={toggleMenu}>
+            <i className={isMenuToggled ? 'fas fa-times' : 'fas fa-bars'} />
+          </div>
+          <ul className={isMenuToggled ? 'nav-menu active' : 'nav-menu'}>
+            <li className="nav-item">
+              <Link to="/" className="nav-links" onClick={closeMobileMenu}>
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/maps" className="nav-links" onClick={closeMobileMenu}>
+                Maps
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
+                Login
+              </Link>
+            </li>
+          </ul>
+        </div>
       </nav>
-    </div>
+    </>
   );
-}
+};
 
 export default Navbar;

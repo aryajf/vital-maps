@@ -1,0 +1,148 @@
+$color_1: #373737;
+$color_2: #ADADAD;
+$color_3: #3D5AF1;
+$color_4: #173aee;
+$font-family_1: Poppins, sans-serif;
+$background-color_1: #FFFFFF;
+$background-color_2: #3D5AF1;
+
+@import "https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap";
+* {
+	font-family: $font-family_1;
+}
+.content-3-5 {
+	.btn {
+		&:focus {
+			outline: none !important;
+		}
+		&:active {
+			outline: none !important;
+		}
+	}
+	.width-right {
+		width: 0%;
+	}
+	.width-left {
+		width: 100%;
+		height: 100%;
+		padding: 8rem 2rem;
+		background-color: $background-color_1;
+	}
+	.centered {
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.left {
+		width: 100%;
+	}
+	.logo {
+		position: absolute;
+		left: 30px;
+		top: 30px;
+	}
+	.title-text {
+		font-weight: 600;
+		font-size: 32px;
+		margin-bottom: 0.5rem;
+		color: $color_1;
+	}
+	.caption-text {
+		font-weight: 400;
+		font-size: 16px;
+		color: $color_2;
+	}
+	form {
+		width: 360px;
+		margin-top: 30px;
+	}
+	.input-label {
+		font-weight: 600;
+		font-size: 16px;
+		line-height: 19px;
+		color: $color_1;
+	}
+	.input {
+		height: 45px;
+		background: #FFFFFF;
+		color: $color_2;
+		border: 1px solid #ADADAD;
+		border-radius: 6px;
+	}
+	a {
+		text-decoration: none;
+		color: $color_3;
+	}
+	.mb-5 {
+		margin-bottom: 20px !important;
+		font-weight: 500;
+		font-size: 14px;
+		line-height: 19px;
+		&:hover {
+			color: $color_4;
+			transition: 0.5s;
+		}
+	}
+	.btn-fill {
+		padding: 10px 150px;
+		background: #3D5AF1;
+		border-radius: 6px;
+		font-weight: 500;
+		font-size: 16px;
+		transition: 0.5s;
+		&:hover {
+			background: #173aee;
+			transition: 0.5s;
+		}
+	}
+}
+@media (max-width: 576px) {
+	.content-3-5 {
+		form {
+			width: auto;
+		}
+		.btn-fill {
+			width: auto;
+			padding: 10px 100px;
+			font-size: 14px;
+		}
+	}
+}
+@media (min-width: 576px) {
+	.content-3-5 {
+		.width-left {
+			padding: 8rem 4rem;
+		}
+		.left {
+			width: 58.333333%;
+		}
+	}
+}
+@media (min-width: 768px) {
+	.content-3-5 {
+		.left {
+			width: 66.666667%;
+		}
+	}
+}
+@media (min-width: 992px) {
+	.content-3-5 {
+		.width-right {
+			width: 48%;
+			background-color: $background-color_2;
+		}
+		.width-left {
+			width: 52%;
+		}
+		.left {
+			width: 75%;
+		}
+	}
+}
+@media (min-width: 1200px) {
+	.content-3-5 {
+		.left {
+			width: 58.333333%;
+		}
+	}
+}

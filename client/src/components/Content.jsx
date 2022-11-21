@@ -1,12 +1,10 @@
 import React from 'react';
-import { FaAsterisk, FaRegCircle, FaCircle, FaAngleDown } from 'react-icons/fa';
-// import Scrollchor from 'react-scrollchor';
 
 function Content() {
   return (
     <div>
-      <section className="home h-100 w-100" style={{ boxSizing: 'border-box', backgroundColor: '#ffffff' }}>
-        <div className="container-xxl mx-auto p-0 position-relative header-2-3">
+      <section className="home h-100 w-100" style={{ boxSizing: 'border-box', backgroundColor: '#FFFFFF' }}>
+        <div className="container-fluid mx-auto p-0  position-relative header-2-3">
           <div>
             <div className="mx-auto d-flex flex-lg-row flex-column hero">
               {/* Left Column */}
@@ -16,23 +14,25 @@ function Content() {
               </div>
               {/* Right Column */}
               <div className="right-column">
-                <img className="cover" src="./Assets/Images/cover.png" width={670} height={700} alt="" />
+                <img className="cover" src="./Assets/Images/cover.png" width={600} height={475} alt="" />
               </div>
             </div>
           </div>
         </div>
       </section>
-      <section className="maps h-100 w-100" style={{ boxSizing: 'border-box', backgroundColor: '#e6ebff' }}>
-        <div>
-          <div className="mx-auto d-flex flex-lg-row flex-column hero">
-            {/* Left Column */}
-            <div className="left-column">
-              <img src="../assets/images/Mapsicle Map.png" width={750} height={700} alt="" />
-            </div>
-            {/* Right Column */}
-            <div className="right-column d-flex flex-row mb-3 flex-column align-items-lg-start text-lg-start justify-content-center text-center">
-              <h2 className="headline">Try to find hospital near your current location now.</h2>
-              <p className="text-caption">Find the best hospital around your location that provides the facilities you need.</p>
+      <section className="section-2 h-100 w-100" style={{ boxSizing: 'border-box', backgroundColor: '#E6EBFF' }}>
+        <div className="container-fluid mx-auto p-0  position-relative maps">
+          <div>
+            <div className="mx-auto d-flex flex-lg-row flex-column heros">
+              {/* Left Column */}
+              <div className="left-column d-flex flex-row mb-3  align-items-lg-start text-lg-start justify-content-center text-center">
+                <img className="mapsicle" src="./Assets/Images/Mapsicle Map.png" width={800} height={700} alt="" />
+              </div>
+              {/* Right Column */}
+              <div className="right-column d-flex flex-row mb-3 flex-column align-items-lg-start text-lg-start justify-content-center text-center">
+                <h2 className="headline">Try to find hospital near your current location now.</h2>
+                <p className="text-caption">Find the best hospital around your location that provides the facilities you need.</p>
+              </div>
             </div>
           </div>
         </div>
