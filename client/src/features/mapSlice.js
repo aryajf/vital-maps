@@ -12,7 +12,7 @@ const initialState = {
 
 export const getHospitals = createAsyncThunk("map/getHospitals", async(_, {rejectWithValue}) => {
     try {
-        const response = await axios.get('http://localhost:3000/hospital')
+        const response = await axios.get('hospital')
         return response.data
     } catch (error) {
         if(error.response){

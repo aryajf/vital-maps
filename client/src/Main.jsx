@@ -5,6 +5,7 @@ import {
 } from "react-router-dom";
 import { Provider } from "react-redux";
 import { store } from './app/store'
+import appConfig from "./app/config"
 
 import App from "./App";
 
@@ -16,8 +17,17 @@ import "@popperjs/core"
 // AXIOS
 import axios from 'axios'
 axios.defaults.withCredentials = true
+axios.defaults.baseURL = appConfig.apiURL
+axios.defaults.headers['Content-Type'] = 'application/json'
 
-const rootElement = document.getElementById("root");
+// Set the AUTH token for any request
+axios.interceptors.request.use(function (config) {
+  const token = localStorage.getItem('vitaltoken')
+  config.headers.Authorization =  token ? `${token}` : ''
+  return config;
+})
+
+const rootElement = document.getElementById("root")
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>

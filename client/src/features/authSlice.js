@@ -11,7 +11,7 @@ const initialState = {
 
 export const LoginUser = createAsyncThunk("user/LoginUser", async(user, {rejectWithValue}) => {
     try {
-        const response = await axios.post('http://localhost:3000/login', {
+        const response = await axios.post('login', {
             email: user.email,
             password: user.password
         })
@@ -26,9 +26,7 @@ export const LoginUser = createAsyncThunk("user/LoginUser", async(user, {rejectW
 
 export const getMe = createAsyncThunk("user/getMe", async(_, {rejectWithValue}) => {
     try {
-        const response = await axios.get('http://localhost:3000/profile', { headers: {
-            "Authorization" : `${localStorage.getItem("vitaltoken")}`
-        } })
+        const response = await axios.get('profile')
         return response.data
     } catch (error) {
         if(error.response){
