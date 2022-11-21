@@ -5,6 +5,10 @@ body {
   box-sizing: border-box;
 }
 
+body{
+  overflow-x: hidden;
+}
+
 .leaflet-container {
   width: 100vw;
   height: 100vh;
