@@ -7,9 +7,9 @@ import { LogOut, reset } from '../../features/authSlice';
 import '../../features/Hospital.scss';
 
 const Dashboard = () => {
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { user, isError } = useSelector((state) => state.auth);
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { user, isError } = useSelector((state) => state.auth)
 
   const logout = () => {
     dispatch(LogOut());
@@ -34,7 +34,7 @@ const Dashboard = () => {
           <nav className="sidebar">
             <div className="profile d-flex flex-lg-row flex-column align-items-center">
               <img style={{ marginRight: '0.75rem' }} src="./Assets/Images/avatar_profile.png" width={60} height={60} alt="Logo Vital Maps" />
-              <p className="username">Lil Salmonella</p>
+              <p className="username">{user?.name}</p>
             </div>
             <ul className="nav flex-column align-content-center">
               <li className="nav-item active mb-3 dashboard">
