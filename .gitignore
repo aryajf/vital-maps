@@ -1,7 +1,7 @@
 # === GIT IGNORE FOR API ===
 api/node_modules/
 api/public/agents/
-api/public/images/paket/
+api/public/images/hospital/
 api/public/users/
 api/public/uploads/
 api/.env

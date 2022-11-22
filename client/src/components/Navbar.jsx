@@ -1,41 +1,42 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
-import { Button } from './Button';
-import '../assets/scss/Navbar.scss';
+import React, { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { Button } from './Button'
+import logo from "../assets/images/logo.png"
+import '../assets/scss/Navbar.scss'
 
 const Navbar = () => {
-  const [isMenuToggled, setIsMenuToggled] = useState(false);
-  const [button, setButton] = useState(true);
+  const [isMenuToggled, setIsMenuToggled] = useState(false)
+  const [button, setButton] = useState(true)
   const { user } = useSelector((state) => state.auth)
 
   const toggleMenu = () => {
-    setIsMenuToggled(!isMenuToggled);
-  };
+    setIsMenuToggled(!isMenuToggled)
+  }
 
   const closeMobileMenu = () => {
-    setIsMenuToggled(false);
-  };
+    setIsMenuToggled(false)
+  }
 
   const showButton = () => {
     if (window.innerWidth <= 960) {
-      setButton(false);
+      setButton(false)
     } else {
-      setButton(true);
+      setButton(true)
     }
-  };
+  }
 
   useEffect(() => {
-    showButton();
-  }, []);
+    showButton()
+  }, [])
 
-  window.addEventListener('resize', showButton);
+  window.addEventListener('resize', showButton)
 
   return (
     <>
       <nav className="navbar navbar-dark">
         <Link to="/">
-          <img style={{ marginRight: '1.5rem' }} src="./Assets/Images/Logo Vital Maps.png" width={20} height={5} alt="Logo Vital Maps" />
+          <img src={logo} width={100} height={50} alt="Logo Vital Maps" />
         </Link>
         <img className="divider" src="./Assets/Images/Vector 1.png" alt="" />
         <button className="navbar-toggler border-0" type="button" data-bs-toggle="modal" data-bs-target="#targetModal-item">
@@ -73,7 +74,7 @@ const Navbar = () => {
         </div>
       </nav>
     </>
-  );
-};
+  )
+}
 
-export default Navbar;
+export default Navbar
