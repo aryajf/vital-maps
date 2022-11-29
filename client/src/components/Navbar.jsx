@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Button } from './Button';
 import '../assets/scss/Navbar.scss';
 
 const Navbar = () => {
   const [isMenuToggled, setIsMenuToggled] = useState(false);
   const [button, setButton] = useState(true);
-  const { user } = useSelector((state) => state.auth)
+  const { user } = useSelector((state) => state.auth);
 
   const toggleMenu = () => {
     setIsMenuToggled(!isMenuToggled);
@@ -35,7 +34,7 @@ const Navbar = () => {
     <>
       <nav className="navbar navbar-dark">
         <Link to="/">
-          <img style={{ marginRight: '1.5rem' }} src="./Assets/Images/Logo Vital Maps.png" width={20} height={5} alt="Logo Vital Maps" />
+          <img style={{ marginRight: '1.5rem' }} src="../assets/Images/Logo Vital Maps.png" width={20} height={5} alt="Logo Vital Maps" />
         </Link>
         <img className="divider" src="./Assets/Images/Vector 1.png" alt="" />
         <button className="navbar-toggler border-0" type="button" data-bs-toggle="modal" data-bs-target="#targetModal-item">
@@ -57,17 +56,15 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              {
-                user ? (
-                  <Link to="/dashboard" className="nav-links" onClick={closeMobileMenu}>
-                    Dashboard
-                  </Link>
-                ) : (
-                  <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
-                    Login
-                  </Link>
-                )
-              }
+              {user ? (
+                <Link to="/dashboard" className="nav-links" onClick={closeMobileMenu}>
+                  Dashboard
+                </Link>
+              ) : (
+                <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>

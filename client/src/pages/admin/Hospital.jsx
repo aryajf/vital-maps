@@ -26,58 +26,54 @@ const Hospital = () => {
       logout();
     }
   }, [isError]);
-  const closeMobileMenu = () => {
-    setIsMenuToggled(false);
-  };
 
   return (
     <>
-      <section className="h-100 w-100" style="box-sizing: border-box; background-color: #FFFFFF">
+      <section className="h-100 w-100" style={{boxSizing: 'border-box', backgroundColor: '#FFFFFF'}}>
         <div className="container-fluid mx-auto p-0 position-relative">
           <nav className="sidebar">
             <div className="profile d-flex flex-lg-row flex-column align-items-center">
-              <img style="margin-right:0.75rem" src="./Assets/Images/avatar_profile.png" width="60" height="60" alt="Logo Vital Maps" />
+              <img style={{marginRight: '0.75rem'}} src="./Assets/Images/avatar_profile.png" width={60} height={60} alt="Logo Vital Maps" />
               <p className="username">Lil Salmonella</p>
             </div>
-
-            <ul className="nav flex-column align-content-center">
-              <li className="nav-item mb-3 ">
-                <a className="nav-link" href="#">
+             <ul className="nav flex-column align-content-center">
+              <li className="nav-item active mb-3 dashboard">
+                <a className="nav-link" href="/dashboard">
                   <span className="icon">
-                    <img src="./Assets/Icons/dashboard.png" width="20" height="20" alt="" />
+                    <img src="./Assets/Icons/dashboard.png" width={20} height={20} alt="" />
                   </span>
                   Dashboard
                 </a>
               </li>
-              <li className="nav-item active mb-3 Hospitals">
+              <li className="nav-item mb-3">
                 <a className="nav-link" href="#">
                   <span className="icon">
-                    <img src="./Assets/Icons/home.png" width="20" height="20" alt="" />
+                    <img src="./Assets/Icons/home.png" width={20} height={20} alt="" />
                   </span>
                   Hospitals
                 </a>
               </li>
-
-              <li className="nav-item mb-3 logout justify-content-end">
-                <a className="nav-link" href="#">
+              <li className="nav-item mb-3">
+                <a className="nav-link" onClick={logout}>
                   <span className="icon">
-                    <img src="./Assets/Icons/arrow-logout.png" width="20" height="20" alt="" />
+                    <img src="./Assets/Icons/arrow-logout.png" width={20} height={20} alt="" />
                   </span>
                   Logout
                 </a>
               </li>
             </ul>
           </nav>
-
           <div className="content">
             <div className="recently d-flex flex-column">
               <h2 className="content-title">Recent Hospital Data</h2>
-
-              {/* <!-- Table Start --> */}
+              <a href="/inputdata">
+                <input type="button" value="Input Data" />
+              </a>
+              {/* Table Start */}
               <table className="table table-responsive table-striped">
                 <thead>
                   <tr>
-                    <th style="border-radius: 0.5em 0 0 0">No</th>
+                    <th style={{borderRadius: '0.5em 0 0 0'}}>No</th>
                     <th>Hospital</th>
                     <th>Code</th>
                     <th>Address</th>
@@ -164,11 +160,10 @@ const Hospital = () => {
                   </tr>
                 </tbody>
               </table>
-              {/* <!-- Table End --> */}
+              {/* Table End */}
             </div>
           </div>
-        </div>
-      </section>
+        </div></section>
     </>
   );
 };
