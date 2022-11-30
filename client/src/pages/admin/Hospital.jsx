@@ -12,7 +12,7 @@ const Hospital = () => {
           <div className="recently d-flex flex-column">
             <h2 className="content-title">Recent Hospital Data</h2>
             <Link to="/hospital/create">
-              <input type="button" value="Input Data" />
+              <input className='btn btn-primary' type="button" value="Input Data" />
             </Link>
             {/* Table Start */}
             <table className="table table-responsive table-striped">

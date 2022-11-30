@@ -2,7 +2,7 @@ import React, { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import { getMe, LogOut, reset } from "../features/authSlice"
+import { getMe, LogOut, initState } from "../features/authSlice"
 import "../features/Hospital.scss"
 
 const Dashboard = () => {
@@ -16,7 +16,7 @@ const Dashboard = () => {
 
   const logout = () => {
     dispatch(LogOut())
-    dispatch(reset())
+    dispatch(initState())
     navigate("/")
   }
 

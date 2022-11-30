@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Sidebar from "../../components/Sidebar"
-import { createHospital } from "../../features/mapSlice"
+import { createHospital, reset } from "../../features/mapSlice"
 import "../../features/input.scss"
 
 const InputData = () => {
@@ -53,7 +53,7 @@ const InputData = () => {
     if (isSuccess) {
       navigate('/hospital')
     }
-    // dispatch(reset())
+    dispatch(reset())
   }, [isSuccess, dispatch, navigate])
 
   function toggle(value) {
