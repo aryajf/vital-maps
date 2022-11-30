@@ -34,6 +34,22 @@ export const getHospital = createAsyncThunk("map/getHospital", async(slug, {reje
     }
 })
 
+export const createHospital = createAsyncThunk("map/createHospital", async(data, {rejectWithValue}) => {
+    try {
+        const response = await axios.post('hospital', data, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        return response.data
+    } catch (error) {
+        if(error.response){
+            const message = error.response.data.message
+            return rejectWithValue(message)
+        }
+    }
+})
+
 export const mapSlice = createSlice({
     name: 'auth',
     initialState,
@@ -66,6 +82,20 @@ export const mapSlice = createSlice({
             state.hospital = action.payload.hospital
         })
         builder.addCase(getHospital.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
+        })
+
+        // Create Hospital
+        builder.addCase(createHospital.pending, (state) => {
+            state.isLoading = true
+        })
+        builder.addCase(createHospital.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+        })
+        builder.addCase(createHospital.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload

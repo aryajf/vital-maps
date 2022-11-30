@@ -100,7 +100,7 @@ module.exports = {
     store: async (req, res) => {
         let slug, title = req.body.title
         title == null ? slug = title : slug = createSlug(title)
-
+        
         let hospitalReq = {
             title: req.body.title,
             slug: slug,
@@ -119,15 +119,18 @@ module.exports = {
             lab: req.body.lab,
             medicalCheckup: req.body.medicalCheckup,
         }
-
+        
+        console.log(123)
+        
         !req.file ? hospitalReq.cover = null : hospitalReq.cover = req.file.filename
-        if(hospitalValidation(hospitalReq) != null){
-            res.status(400).send(hospitalValidation(hospitalReq))
-            if(hospitalReq.cover){
-                deleteFile(req.file.path)
-            }
-            return
-        }
+        // if(hospitalValidation(hospitalReq) != null){
+        //     res.status(400).send(hospitalValidation(hospitalReq))
+        //     if(hospitalReq.cover){
+        //         deleteFile(req.file.path)
+        //     }
+        //     return
+        // }
+        console.log(hospitalReq)
 
         try {
             let checkSlug = await Hospital.findOne({where: {slug: hospitalReq.slug}})
@@ -152,6 +155,7 @@ module.exports = {
                 status: true,
             })
         } catch (err) {
+            console.log(err)
             res.status(400).json({
                 error: err.message,
                 message: 'Terjadi kesalahan saat menambah hospital',
@@ -263,8 +267,8 @@ function findHospital(slug) {
 function hospitalValidation(dataRequest) {
     let rules = {
         title: 'required',
-        long: 'required',
-        lat: 'required',
+        long: 'required|numeric',
+        lat: 'required|numeric',
         capacity: 'required|numeric',
         phone: 'required',
         description: 'required',
