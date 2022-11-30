@@ -1,4 +1,5 @@
 import React from 'react';
+import Maps from '../pages/Maps'
 
 function Content() {
   return (
@@ -26,7 +27,7 @@ function Content() {
             <div className="mx-auto d-flex flex-lg-row flex-column heros">
               {/* Left Column */}
               <div className="left-column d-flex flex-row mb-3  align-items-lg-start text-lg-start justify-content-center text-center">
-                <img className="mapsicle" src="./Assets/Images/Mapsicle Map.png" width={800} height={700} alt="" />
+                <Maps width="800" />
               </div>
               {/* Right Column */}
               <div className="right-column d-flex flex-row mb-3 flex-column align-items-lg-start text-lg-start justify-content-center text-center">

@@ -1,14 +1,29 @@
 import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from 'react-redux'
 import { getHospitals } from '../features/mapSlice'
-import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet"
-import * as L from "leaflet";
+import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents  } from "react-leaflet"
+import * as L from "leaflet"
 import MarkerClusterGroup from "react-leaflet-markercluster"
-import "../assets/scss/Home.scss"
+// import "../assets/scss/Home.scss"
 import MapCanvas from '../components/MapCanvas'
-import { BiListUl } from "react-icons/bi";
+// import Legend from "../components/Legend";
 
-function Home() {
+//  Create the Icon
+const LeafIcon = L.Icon.extend({
+  options: {}
+})
+
+const hospitalIcon = new LeafIcon({
+  iconUrl: '/img/icons/maps-point.png',
+  iconSize: [30,40]
+}),
+userIcon = new LeafIcon({
+  iconUrl:
+    "/img/icons/user.png",
+    iconSize: [30,40]
+})
+
+function Maps(props) {
   const [slug, setSlug] = useState(null)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
@@ -25,23 +40,33 @@ function Home() {
     setSlug(detailSlug)
   }
 
-  //  Create the Icon
-  const LeafIcon = L.Icon.extend({
-    options: {}
-  });
-
-  const hospitalIcon = new LeafIcon({
-    iconUrl:
-      '/img/icons/maps-point.png'
-  }),
-  userIcon = new LeafIcon({
-    iconUrl:
-      "/img/icons/user.png"
-  });
+  function LocationMarker() {
+    const [position, setPosition] = useState(null)
+    // const [setBbox] = useState([])
+  
+    const map = useMap()
+  
+    useEffect(() => {
+      map.locate().on("locationfound", function (e) {
+        setPosition(e.latlng)
+        if(props.width){
+          map.flyTo(e.latlng, map.getZoom())
+        }
+      })
+    }, [map])
+  
+    return position === null ? null : (
+      <Marker position={position} icon={userIcon}>
+        <Popup>
+          <b>Lokasi Kamu</b>
+        </Popup>
+      </Marker>
+    )
+  }
   
   return (
     <>
-    <MapContainer center={[-6.934266, 107.604904]} zoom={15} scrollWheelZoom={false}>
+    <MapContainer style={{width: props.width+'px'}} center={[-6.934266, 107.604904]} zoom={15} scrollWheelZoom={false}>
       <TileLayer
         attribution='&copy <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -62,10 +87,12 @@ function Home() {
           : null
         }
       </MarkerClusterGroup>
+      <LocationMarker />
+      {/* <Legend /> */}
     </MapContainer>
     <MapCanvas handleClose={handleClose} show={show} slug={slug}></MapCanvas>
     </>
   )
 }
 
-export default Home
+export default Maps
