@@ -58,17 +58,15 @@ const Navbar = () => {
               </Link>
             </li>
             <li className="nav-item">
-              {
-                user ? (
-                  <Link to="/dashboard" className="nav-links" onClick={closeMobileMenu}>
-                    Dashboard
-                  </Link>
-                ) : (
-                  <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
-                    Login
-                  </Link>
-                )
-              }
+              {user ? (
+                <Link to="/dashboard" className="nav-links" onClick={closeMobileMenu}>
+                  Dashboard
+                </Link>
+              ) : (
+                <Link to="/login" className="nav-links" onClick={closeMobileMenu}>
+                  Login
+                </Link>
+              )}
             </li>
           </ul>
         </div>

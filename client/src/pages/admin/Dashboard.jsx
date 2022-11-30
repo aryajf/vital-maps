@@ -7,9 +7,9 @@ import { LogOut, reset } from '../../features/authSlice';
 import '../../features/Hospital.scss';
 
 const Dashboard = () => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const { user, isError } = useSelector((state) => state.auth)
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { user, isError } = useSelector((state) => state.auth);
 
   const logout = () => {
     dispatch(LogOut());
@@ -46,7 +46,7 @@ const Dashboard = () => {
                 </a>
               </li>
               <li className="nav-item mb-3">
-                <a className="nav-link" href="./Hospital.jsx">
+                <a className="nav-link" href="./hospital">
                   <span className="icon">
                     <img src="./Assets/Icons/home.png" width={20} height={20} alt="" />
                   </span>
