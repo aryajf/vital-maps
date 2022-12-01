@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { MapContainer, TileLayer, Marker, Popup, useMap, useMapEvents } from "react-leaflet";
 import * as L from "leaflet";
-import MapCanvas from "../components/MapCanvas";
+import MapCanvas from "../components/MapCanvas"
+import userIconUrl from '../assets/Images/user-point.png'
 
 //  Create the Icon
 const LeafIcon = L.Icon.extend({
@@ -9,7 +10,7 @@ const LeafIcon = L.Icon.extend({
 });
 
 const userIcon = new LeafIcon({
-  iconUrl: "/img/icons/user.png",
+  iconUrl: userIconUrl,
   iconSize: [30, 40],
 });
 

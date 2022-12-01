@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getHospitals } from "../features/mapSlice";
+import hospitalIconUrl from '../assets/Images/maps-point.png'
+import userIconUrl from '../assets/Images/user-point.png'
 import {
   MapContainer,
   TileLayer,
@@ -21,11 +23,11 @@ const LeafIcon = L.Icon.extend({
 });
 
 const hospitalIcon = new LeafIcon({
-    iconUrl: "/img/icons/maps-point.png",
-    iconSize: [30, 40],
+    iconUrl: hospitalIconUrl,
+    iconSize: [30, 50],
   }),
   userIcon = new LeafIcon({
-    iconUrl: "/img/icons/user.png",
+    iconUrl: userIconUrl,
     iconSize: [30, 40],
   });
 
