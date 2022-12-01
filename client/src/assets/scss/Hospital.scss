@@ -97,15 +97,8 @@ body {
 	}
 }
 .table {
-	border-collapse: collapse;
-	border-spacing: 0;
-	border: 1px solid #ddd;
-	display: block;
 	padding: 5px;
-	margin-top: 5px;
-	width: 100px;
-	height: 500px;
-	overflow-y: scroll;
+	margin-top: 15px;
 }
 table {
 	thead {
@@ -119,6 +112,17 @@ table {
 	tbody {
 		td {
 			font-size: 14px;
+			a, svg{
+				font-size: 20px;
+				cursor: pointer;
+			}
+			.edit{
+				color: #3d97f1;
+				margin-right: 10px;
+			}
+			.delete{
+				color: rgb(225, 33, 33);
+			}
 		}
 	}
 }

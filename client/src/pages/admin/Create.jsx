@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import Sidebar from "../../components/Sidebar"
+import MapPicker from "../../components/MapPicker"
 import { createHospital, reset } from "../../features/mapSlice"
-import "../../features/input.scss"
 
 const InputData = () => {
   const [cover, setCover] = useState("")
@@ -58,6 +58,11 @@ const InputData = () => {
 
   function toggle(value) {
     return !value
+  }
+
+  function handleChangeMap(e) {
+    setLat(e.lat);
+    setLong(e.lng);
   }
 
   return (
@@ -122,7 +127,7 @@ const InputData = () => {
                       onChange={(e) => setAlamat(e.target.value)}
                     />
                     <br />
-                    <label htmlFor="phone">Call Number</label>
+                    <label htmlFor="phone">Nomor Telepon</label>
                     <br />
                     <input
                       id="phone"
@@ -132,7 +137,7 @@ const InputData = () => {
                       onChange={(e) => setPhone(e.target.value)}
                     />
                     <br />
-                    <label htmlFor="capacity">Capacity</label>
+                    <label htmlFor="capacity">Kapasitas (Per Ruangan)</label>
                     <br />
                     <input
                       id="capacity"
@@ -142,7 +147,7 @@ const InputData = () => {
                       onChange={(e) => setCapacity(e.target.value)}
                     />
                     <br />
-                    <label htmlFor="description">Description</label>
+                    <label htmlFor="description">Deskripsi Rumah Sakit</label>
                     <br />
                     <textarea
                       id="description"
@@ -150,25 +155,32 @@ const InputData = () => {
                       value={description}
                       onChange={(e) => setDescription(e.target.value)} />
                     <br />
-                    <label htmlFor="long">Longitude</label>
+                    <MapPicker width="100" onChange={handleChangeMap} />
                     <br />
-                    <input
-                      id="long"
-                      className="form-control"
-                      type="number"
-                      value={long}
-                      onChange={(e) => setLong(e.target.value)}
-                    />
-                    <br />
-                    <label htmlFor="lat">Latitude</label>
-                    <br />
-                    <input
-                      id="lat"
-                      className="form-control"
-                      type="number"
-                      value={lat}
-                      onChange={(e) => setLat(e.target.value)}
-                    />
+                    <div className="row">
+                      <div className="col">
+                        <label htmlFor="lat">Latitude</label>
+                        <br />
+                        <input
+                          id="lat"
+                          className="form-control"
+                          type="number"
+                          value={lat}
+                          onChange={(e) => setLat(e.target.value)}
+                        />
+                      </div>
+                      <div className="col">
+                        <label htmlFor="long">Longitude</label>
+                        <br />
+                        <input
+                          id="long"
+                          className="form-control"
+                          type="number"
+                          value={long}
+                          onChange={(e) => setLong(e.target.value)}
+                        />
+                      </div>
+                    </div>
                     <br />
                     <label>Fasilitas</label>
                     <br />

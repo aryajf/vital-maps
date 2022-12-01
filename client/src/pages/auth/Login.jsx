@@ -1,27 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { LoginUser, reset } from '../../features/authSlice';
-import '../../assets/scss/Login.scss';
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { useNavigate } from 'react-router-dom'
+import { LoginUser, reset } from '../../features/authSlice'
+import Logo from '../../assets/images/logo.png'
+import '../../assets/scss/Login.scss'
 
 const Login = () => {
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-  const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth);
+  const [email, setEmail] = useState('')
+  const [password, setPassword] = useState('')
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
+  const { user, isError, isSuccess, isLoading, message } = useSelector((state) => state.auth)
 
   useEffect(() => {
     if (user || isSuccess) {
-      navigate('/dashboard');
+      navigate('/dashboard')
     }
-    dispatch(reset());
-  }, [user, isSuccess, dispatch, navigate]);
+    dispatch(reset())
+  }, [user, isSuccess, dispatch, navigate])
 
   const Auth = (e) => {
-    e.preventDefault();
-    dispatch(LoginUser({ email, password }));
-  };
+    e.preventDefault()
+    dispatch(LoginUser({ email, password }))
+  }
 
   return (
     <div className="container">
@@ -29,7 +30,7 @@ const Login = () => {
         <section className="signin h-100 w-100" style={{ boxSizing: 'border-box', background: 'radial-gradient(50% 48.63% at 50% 49.85%, #3D5AF1 0%, #003FCB 83.33%)' }}>
           <div className="content-3-5 d-flex flex-column align-items-center h-100 flex-lg-row">
             <div className="d-flex mx-auto align-items-left justify-content-center width-left mx-lg-0">
-              <img className="logo" src="./Assets/Images/Logo Vital Maps.png" width={120} height={60} alt="Logo Vital Maps" />
+              <img className="logo" src={Logo} width={120} height={60} alt="Logo Vital Maps" />
               <div className="left mx-lg-0 mx-auto">
                 <div className="align-items-center justify-content-left d-lg-none d-flex" style={{ marginBottom: '20px' }}>
                   <img className="img-fluid" src="./Assets/Images/3d-illustration-removebg-preview.png" width={350} height={370} alt="" />
@@ -60,7 +61,7 @@ const Login = () => {
         </section>
       </div>
     </div>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

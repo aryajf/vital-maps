@@ -1,9 +1,19 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { getHospitals } from '../../features/mapSlice'
 import Sidebar from "../../components/Sidebar"
 import { Link } from "react-router-dom"
-import '../../features/Hospital.scss'
+import "../../assets/scss/Hospital.scss"
+import { FaTrash, FaPen } from "react-icons/fa";
 
 const Hospital = () => {
+  const dispatch = useDispatch()
+  const { hospitals } = useSelector((state) => state.map)
+
+  useEffect(() => {
+    dispatch(getHospitals())
+  }, [dispatch])
+
   return (
     <section className="h-100 w-100" style={{boxSizing: 'border-box', backgroundColor: '#FFFFFF'}}>
       <div className="container-fluid mx-auto p-0 position-relative">
@@ -18,91 +28,35 @@ const Hospital = () => {
             <table className="table table-responsive table-striped">
               <thead>
                 <tr>
-                  <th style={{borderRadius: '0.5em 0 0 0'}}>No</th>
+                  <th>No</th>
                   <th>Hospital</th>
-                  <th>Code</th>
                   <th>Address</th>
                   <th>Call Number</th>
+                  <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Rumah Sakit Umum Daerah Hasan Sadikin</td>
-                  <td>4H2X+P9 Pasteur, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Pasteur No.38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</td>
-                  <td>(022) 2034953</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Rumah Sakit Al Islam</td>
-                  <td>3M69+9M Manjahlega, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Soekarno Hatta No.644, Manjahlega, Kec. Rancasari, Kota Bandung, Jawa Barat 40286</td>
-                  <td>(022) 7562046</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Rumah Sakit Umum Daerah Hasan Sadikin</td>
-                  <td>4H2X+P9 Pasteur, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Pasteur No.38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</td>
-                  <td>(022) 2034953</td>
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Rumah Sakit Umum Daerah Hasan Sadikin</td>
-                  <td>4H2X+P9 Pasteur, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Pasteur No.38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</td>
-                  <td>(022) 2034953</td>
-                </tr>
-                <tr>
-                  <td>5</td>
-                  <td>Rumah Sakit Umum Daerah Hasan Sadikin</td>
-                  <td>4H2X+P9 Pasteur, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Pasteur No.38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</td>
-                  <td>(022) 2034953</td>
-                </tr>
-                <tr>
-                  <td>6</td>
-                  <td>Rumah Sakit Santo Borromeus</td>
-                  <td>4H2X+P9 Pasteur, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Pasteur No.38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</td>
-                  <td>(022) 2034953</td>
-                </tr>
-                <tr>
-                  <td>7</td>
-                  <td>Rumah Sakit Santo Borromeus</td>
-                  <td>4H2X+P9 Pasteur, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Pasteur No.38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</td>
-                  <td>(022) 2034953</td>
-                </tr>
-                <tr>
-                  <td>8</td>
-                  <td>Rumah Sakit Santo Borromeus</td>
-                  <td>4H2X+P9 Pasteur, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Pasteur No.38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</td>
-                  <td>(022) 2034953</td>
-                </tr>
-                <tr>
-                  <td>9</td>
-                  <td>Rumah Sakit Santo Borromeus</td>
-                  <td>4H2X+P9 Pasteur, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Pasteur No.38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</td>
-                  <td>(022) 2034953</td>
-                </tr>
-                <tr>
-                  <td>10</td>
-                  <td>Rumah Sakit Santo Borromeus</td>
-                  <td>4H2X+P9 Pasteur, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Pasteur No.38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</td>
-                  <td>(022) 2034953</td>
-                </tr>
-                <tr>
-                  <td>11</td>
-                  <td>Rumah Sakit Santo Borromeus</td>
-                  <td>4H2X+P9 Pasteur, Kota Bandung, Jawa Barat</td>
-                  <td>Jl. Pasteur No.38, Pasteur, Kec. Sukajadi, Kota Bandung, Jawa Barat 40161</td>
-                  <td>(022) 2034953</td>
-                </tr>
+                {hospitals ?
+                  hospitals.length != 0 ? 
+                    hospitals.map((hospital, i) => (
+                      <tr>
+                        <td className='text-center'>{++i}</td>
+                        <td>{hospital.title}</td>
+                        <td>{hospital.alamat}</td>
+                        <td className='text-center'>{hospital.phone}</td>
+                        <td>
+                          <div className='d-flex justify-content-center align-items-center'>
+                            <FaPen className='edit' onClick="" />
+                            <Link to="">
+                              <FaTrash className='delete' />
+                            </Link>
+                          </div>
+                        </td>
+                      </tr>
+                    ))
+                    : null
+                  : null
+                }
               </tbody>
             </table>
             {/* Table End */}

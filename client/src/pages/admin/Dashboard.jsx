@@ -1,6 +1,6 @@
 import React from "react"
 import Sidebar from "../../components/Sidebar"
-import "../../features/Hospital.scss"
+import "../../assets/scss/Hospital.scss"
 
 const Dashboard = () => {
   return (

@@ -38,6 +38,7 @@ export const getMe = createAsyncThunk("user/getMe", async(_, {rejectWithValue}) 
 
 export const LogOut = createAsyncThunk("user/LogOut", async() => {
     localStorage.removeItem("vitaltoken")
+    notyf.success('Berhasil Logout');
 })
 
 export const authSlice = createSlice({
@@ -62,11 +63,13 @@ export const authSlice = createSlice({
             state.isSuccess = true
             state.user = action.payload.user
             localStorage.setItem("vitaltoken", action.payload.token)
+            notyf.success('Berhasil Login');
         })
         builder.addCase(LoginUser.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
+            notyf.error('Gagal Login');
         })
 
         // Get User

@@ -94,11 +94,13 @@ export const mapSlice = createSlice({
         builder.addCase(createHospital.fulfilled, (state, action) => {
             state.isLoading = false
             state.isSuccess = true
+            notyf.error('Berhasil menambah data')
         })
         builder.addCase(createHospital.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
+            notyf.error('Gagal menambah data')
         })
     }
 })

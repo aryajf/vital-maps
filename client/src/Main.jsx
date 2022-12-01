@@ -27,12 +27,21 @@ axios.interceptors.request.use(function (config) {
   return config;
 })
 
+// import { ToastContainer, toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+
+// Notyf
+import { Notyf } from 'notyf'
+import 'notyf/notyf.min.css'
+window.notyf = new Notyf({dismissible:true})
+
 const rootElement = document.getElementById("root")
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
         <App />
+        {/* <ToastContainer /> */}
       </Router>
     </Provider>
   </React.StrictMode>,

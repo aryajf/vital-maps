@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
 import { getMe, LogOut, initState } from "../features/authSlice"
-import "../features/Hospital.scss"
+import "../assets/scss/Hospital.scss"
 
 const Dashboard = () => {
   const dispatch = useDispatch()
