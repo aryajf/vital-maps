@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { LoginUser, reset } from '../../features/authSlice'
 import Logo from '../../assets/images/logo.png'
+import loginImage from '../../assets/Images/3d-illustration-removebg-preview.png'
 import '../../assets/scss/Login.scss'
 
 const Login = () => {
@@ -33,7 +34,7 @@ const Login = () => {
               <img className="logo" src={Logo} width={120} height={60} alt="Logo Vital Maps" />
               <div className="left mx-lg-0 mx-auto">
                 <div className="align-items-center justify-content-left d-lg-none d-flex" style={{ marginBottom: '20px' }}>
-                  <img className="img-fluid" src="./Assets/Images/3d-illustration-removebg-preview.png" width={350} height={370} alt="" />
+                  <img className="img-fluid" src={loginImage} width={350} height={370} alt="" />
                 </div>
                 <h3 className="title-text">Welcome back</h3>
                 <p className="caption-text">Welcome back! Please enter your details.</p>
@@ -55,7 +56,7 @@ const Login = () => {
               </div>
             </div>
             <div className="position-relative d-none d-lg-block h-100 width-right">
-              <img className="position-absolute img-fluid centered" src="./Assets/Images/3d-illustration-removebg-preview.png" width={350} height={370} alt="" />
+              <img className="position-absolute img-fluid centered" src={loginImage} width={350} height={370} alt="" />
             </div>
           </div>
         </section>

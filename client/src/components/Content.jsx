@@ -1,5 +1,6 @@
 import React from 'react';
 import Maps from '../pages/Maps'
+import HomeImage from '../assets/Images/cover.png'
 
 function Content() {
   return (
@@ -15,7 +16,7 @@ function Content() {
               </div>
               {/* Right Column */}
               <div className="right-column">
-                <img className="cover" src="./Assets/Images/cover.png" width={600} height={475} alt="" />
+                <img className="cover" src={HomeImage} width={600} height={475} alt="" />
               </div>
             </div>
           </div>
