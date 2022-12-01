@@ -5,6 +5,7 @@ import { getHospital } from '../features/mapSlice'
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import appConfig from "../app/config"
 import { BiPhoneCall, BiMapAlt, BiPencil, BiListCheck } from "react-icons/bi"
+import { FaBed } from "react-icons/fa"
 
 function MapCanvas(props){
     const { hospital } = useSelector((state) => state.map)
@@ -31,6 +32,10 @@ function MapCanvas(props){
                     <p>{hospital?.alamat}</p>
                 </div>
                 <div className='mb-3'>
+                    <h5><FaBed /> Kapasitas</h5>
+                    <p>{hospital?.capacity} Kamar</p>
+                </div>
+                <div className='mb-3'>
                     <h5><BiPencil /> Deskripsi</h5>
                     <p>{hospital?.description}</p>
                 </div>
@@ -39,9 +44,10 @@ function MapCanvas(props){
                     <ul>
                         {hospital?.igd && <li>IGD</li>}
                         {hospital?.ugd && <li>UGD</li>}
+                        {hospital?.icu && <li>ICU</li>}
                         {hospital?.vaksin && <li>Vaksin</li>}
                         {hospital?.rawatInap && <li>Rawat Inap</li>}
-                        {hospital?.rawatJalan && <li>rawat Jalan</li>}
+                        {hospital?.rawatJalan && <li>Rawat Jalan</li>}
                         {hospital?.lab && <li>Lab</li>}
                         {hospital?.medicalCheckup && <li>Medical Checkup</li>}
                     </ul>

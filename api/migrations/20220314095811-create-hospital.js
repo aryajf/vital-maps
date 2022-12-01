@@ -54,6 +54,11 @@ module.exports = {
         type: Sequelize.BOOLEAN,
         defaultValue: 0
       },
+      icu: {
+        allowNull: true,
+        type: Sequelize.BOOLEAN,
+        defaultValue: 0
+      },
       vaksin: {
         allowNull: true,
         type: Sequelize.BOOLEAN,

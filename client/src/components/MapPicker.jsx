@@ -15,21 +15,10 @@ const userIcon = new LeafIcon({
 
 function Maps(props) {
   const [slug] = useState(null);
-  const [position, setPosition] = useState(null);
   const [show, setShow] = useState(false);
+  const [currentPosition, setCurremPosition] = useState(null);
+  const [position, setPosition] = useState(null);
   const handleClose = () => setShow(false);
-
-  function LocationMarker() {
-    const map = useMap()
-
-    useEffect(() => {
-      map.locate().on("locationfound", function (e) {
-        if (props.width) {
-          map.flyTo(e.latlng, map.getZoom());
-        }
-      });
-    }, [map])
-  }
 
   const LocationFinderDummy = () => {
     const map = useMapEvents({

@@ -4,6 +4,7 @@ import Home from './pages/Home';
 import Dashboard from './pages/admin/Dashboard';
 import Hospital from './pages/admin/Hospital';
 import Create from './pages/admin/Create';
+import Edit from './pages/admin/Edit';
 import Login from './pages/auth/Login';
 import Maps from './pages/Maps';
 import NotFound from './pages/NotFound';
@@ -21,6 +22,7 @@ function App() {
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/hospital" element={<Hospital />} />
         <Route path="/hospital/create" element={<Create />} />
+        <Route path="/hospital/:slug/edit" element={<Edit />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

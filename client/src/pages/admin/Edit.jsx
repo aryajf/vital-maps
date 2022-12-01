@@ -1,65 +1,90 @@
-import React, { useState, useEffect } from "react"
-import { useDispatch, useSelector } from "react-redux"
-import { useNavigate } from "react-router-dom"
-import Sidebar from "../../components/Sidebar"
-import MapPicker from "../../components/MapPicker"
-import { getHospitals, createHospital, reset } from "../../features/mapSlice"
+import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useSearchParams, useParams } from "react-router-dom";
+import Sidebar from "../../components/Sidebar";
+import MapPicker from "../../components/MapPicker";
+import { getHospital, getHospitals, editHospital, reset } from "../../features/mapSlice";
 
 const Create = () => {
-  const [cover, setCover] = useState("")
-  const [title, setTitle] = useState("")
-  const [alamat, setAlamat] = useState("")
-  const [phone, setPhone] = useState("")
-  const [capacity, setCapacity] = useState("")
-  const [description, setDescription] = useState("")
-  const [long, setLong] = useState("")
-  const [lat, setLat] = useState("")
-  const [igd, setIgd] = useState(false)
-  const [ugd, setUgd] = useState(false)
-  const [icu, setIcu] = useState(false)
-  const [vaksin, setVaksin] = useState(false)
-  const [rawatInap, setRawatInap] = useState(false)
-  const [rawatJalan, setRawatJalan] = useState(false)
-  const [lab, setLab] = useState(false)
-  const [medicalCheckup, setMedicalCheckup] = useState(false)
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
-  const { isError, isSuccess, message } = useSelector((state) => state.map)
+  const { hospital } = useSelector((state) => state.map)
+  const [cover, setCover] = useState("");
+  const [title, setTitle] = useState("");
+  const [alamat, setAlamat] = useState("");
+  const [phone, setPhone] = useState("");
+  const [capacity, setCapacity] = useState("");
+  const [description, setDescription] = useState("");
+  const [long, setLong] = useState("");
+  const [lat, setLat] = useState("");
+  const [igd, setIgd] = useState("");
+  const [ugd, setUgd] = useState("");
+  const [icu, setIcu] = useState("");
+  const [vaksin, setVaksin] = useState("");
+  const [rawatInap, setRawatInap] = useState("");
+  const [rawatJalan, setRawatJalan] = useState("");
+  const [lab, setLab] = useState("");
+  const [medicalCheckup, setMedicalCheckup] = useState("");
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const { isError, isSuccess, message } = useSelector((state) => state.map);
+  const {slug} = useParams()
 
-  const createData = (e) => {
-    e.preventDefault()
+  const updateData = (e) => {
+    e.preventDefault();
 
-    const data = new FormData()
-    data.append("cover", cover)
-    data.append("title", title)
-    data.append("alamat", alamat)
-    data.append("phone", phone)
-    data.append("capacity", capacity)
-    data.append("description", description)
-    data.append("long", long)
-    data.append("lat", lat)
-    data.append("igd", igd)
-    data.append("ugd", ugd)
-    data.append("icu", icu)
-    data.append("vaksin", vaksin)
-    data.append("rawatInap", rawatInap)
-    data.append("rawatJalan", rawatJalan)
-    data.append("lab", lab)
-    data.append("medicalCheckup", medicalCheckup)
-    dispatch(createHospital(data))
-    dispatch(getHospitals())
-    navigate('/hospital')
-  }
+    const data = new FormData();
+    data.append("cover", cover);
+    data.append("title", title);
+    data.append("alamat", alamat);
+    data.append("phone", phone);
+    data.append("capacity", capacity);
+    data.append("description", description);
+    data.append("long", long);
+    data.append("lat", lat);
+    data.append("igd", igd);
+    data.append("ugd", ugd);
+    data.append("icu", icu);
+    data.append("vaksin", vaksin);
+    data.append("rawatInap", rawatInap);
+    data.append("rawatJalan", rawatJalan);
+    data.append("lab", lab);
+    data.append("medicalCheckup", medicalCheckup);
+    dispatch(editHospital({slug, data}));
+    dispatch(getHospitals());
+    navigate("/hospital");
+  };
+
+  useEffect(() => {
+    dispatch(getHospital(slug)).then((res) => {
+      if(res.payload.hospital){
+        let hospital = res.payload.hospital
+        setTitle(hospital.title)
+        setAlamat(hospital.alamat)
+        setPhone(hospital.phone)
+        setCapacity(hospital.capacity)
+        setDescription(hospital.description)
+        setLat(hospital.lat)
+        setLong(hospital.long)
+        setIgd(hospital.igd)
+        setUgd(hospital.ugd)
+        setIcu(hospital.icu)
+        setVaksin(hospital.vaksin)
+        setRawatInap(hospital.rawatInap)
+        setRawatJalan(hospital.rawatJalan)
+        setLab(hospital.lab)
+        setMedicalCheckup(hospital.medicalCheckup)
+      }
+    })
+  }, []);
 
   useEffect(() => {
     if (isSuccess) {
-      navigate('/hospital')
+      navigate("/hospital");
     }
-    dispatch(reset())
-  }, [isSuccess, dispatch, navigate])
+    dispatch(reset());
+  }, [isSuccess, dispatch, navigate]);
 
   function toggle(value) {
-    return !value
+    return !value;
   }
 
   function handleChangeMap(e) {
@@ -76,10 +101,14 @@ const Create = () => {
         <div className="container-fluid mx-auto p-0 position-relative">
           <Sidebar />
           <div className="content">
-            <form onSubmit={createData}>
+            <form onSubmit={updateData}>
               <div className="recently d-flex flex-column">
-                {isError && <p className="alert alert-danger has-text-centered">{message}</p>}
-                <h2 className="content-title">Tambah Data Baru</h2>
+                {isError && (
+                  <p className="alert alert-danger has-text-centered">
+                    {message}
+                  </p>
+                )}
+                <h2 className="content-title">Edit Data</h2>
                 <div className="row justify-content-center">
                   <div className="col-10 dropzone">
                     <div className="row my-5">
@@ -89,7 +118,7 @@ const Create = () => {
                             <label htmlFor="cover">
                               <img
                                 src="http://100dayscss.com/codepen/upload.svg"
-                                style={{ cursor:'pointer' }}
+                                style={{ cursor: "pointer" }}
                                 className="upload-icon"
                                 width="130px"
                                 height="130px"
@@ -109,8 +138,8 @@ const Create = () => {
                       </div>
                     </div>
                   </div>
-                  </div>
-                  <div className="row justify-content-center">
+                </div>
+                <div className="row justify-content-center">
                   <div className="col-10 input-field-border-bottom">
                     <div className="row mb-3">
                       <div className="col-md-6">
@@ -149,7 +178,9 @@ const Create = () => {
                         />
                       </div>
                       <div className="col-md-6">
-                        <label htmlFor="capacity">Kapasitas (Per Ruangan)</label>
+                        <label htmlFor="capacity">
+                          Kapasitas (Per Ruangan)
+                        </label>
                         <br />
                         <input
                           id="capacity"
@@ -167,7 +198,8 @@ const Create = () => {
                       id="description"
                       className="form-control"
                       value={description}
-                      onChange={(e) => setDescription(e.target.value)} />
+                      onChange={(e) => setDescription(e.target.value)}
+                    />
                     <br />
                     <MapPicker width="100" onChange={handleChangeMap} />
                     <br />
@@ -307,7 +339,7 @@ const Create = () => {
         </div>
       </section>
     </>
-  )
-}
+  );
+};
 
-export default Create
+export default Create;

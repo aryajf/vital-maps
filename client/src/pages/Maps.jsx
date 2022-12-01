@@ -25,6 +25,7 @@ userIcon = new LeafIcon({
 
 function Maps(props) {
   const [slug, setSlug] = useState(null)
+  const [position, setPosition] = useState(null)
   const [show, setShow] = useState(false)
   const handleClose = () => setShow(false)
   const handleShow = () => setShow(true)
@@ -41,9 +42,6 @@ function Maps(props) {
   }
 
   function LocationMarker() {
-    const [position, setPosition] = useState(null)
-    // const [setBbox] = useState([])
-  
     const map = useMap()
   
     useEffect(() => {

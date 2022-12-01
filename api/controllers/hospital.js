@@ -15,7 +15,7 @@ module.exports = {
             if (hospitals.length > 0) {
                 res.json({
                     hospitals: hospitals,
-                    message: 'Hospital Berhasil Ditampilkan',
+                    message: 'Rumah sakit Berhasil Ditampilkan',
                     request: {
                         method: req.method,
                         url: process.env.BASE_URL + 'hospital'
@@ -30,14 +30,14 @@ module.exports = {
             }
         } catch (err) {
             res.status(400).json({
-                message: 'Terjadi kesalahan saat menampilkan hospital',
+                message: 'Terjadi kesalahan saat menampilkan rumah sakit',
                 status: false
             })
         }
     },
     search: async(req, res) => {
         if(req.params.keyword == ''){
-            res.json({message : 'Hospital tidak ditemukan', status: false})
+            res.json({message : 'Rumah sakit tidak ditemukan', status: false})
             return
         }
         
@@ -50,7 +50,7 @@ module.exports = {
             if (hospitals.length > 0) {
                 res.json({
                     hospitals: hospitals,
-                    message: 'Hospital Berhasil Ditemukan',
+                    message: 'Rumah sakit Berhasil Ditemukan',
                     request: {
                         method: req.method,
                         url: process.env.BASE_URL + 'hospital'
@@ -59,13 +59,13 @@ module.exports = {
                 })
             } else {
                 res.json({
-                    message: 'Hospital tidak ditemukan',
+                    message: 'Rumah sakit tidak ditemukan',
                     status: false
                 })
             }
         }catch(err){
             res.status(400).json({
-                message: 'Terjadi kesalahan saat menampilkan hospital',
+                message: 'Terjadi kesalahan saat menampilkan rumah sakit',
                 status: false
             })
         }
@@ -75,7 +75,7 @@ module.exports = {
             const hospital = await findHospital(req.params.slug)
             if (hospital == null) {
                 res.status(404).json({
-                    message: 'Hospital tidak ditemukan',
+                    message: 'Rumah sakit tidak ditemukan',
                     status: false
                 })
                 return
@@ -83,7 +83,7 @@ module.exports = {
 
             res.json({
                 hospital: hospital,
-                message: 'Hospital Berhasil Ditampilkan',
+                message: 'Rumah sakit Berhasil Ditampilkan',
                 request: {
                     method: req.method,
                     url: process.env.BASE_URL + 'hospital/' + req.params.slug
@@ -92,7 +92,7 @@ module.exports = {
             })
         } catch (err) {
             res.status(400).json({
-                message: 'Terjadi kesalahan saat menampilkan hospital',
+                message: 'Terjadi kesalahan saat menampilkan rumah sakit',
                 status: false
             })
         }
@@ -113,6 +113,7 @@ module.exports = {
             cover: '',
             igd: req.body.igd,
             ugd: req.body.ugd,
+            icu: req.body.icu,
             vaksin: req.body.vaksin,
             rawatInap: req.body.rawatInap,
             rawatJalan: req.body.rawatJalan,
@@ -120,17 +121,14 @@ module.exports = {
             medicalCheckup: req.body.medicalCheckup,
         }
         
-        console.log(123)
-        
         !req.file ? hospitalReq.cover = null : hospitalReq.cover = req.file.filename
-        // if(hospitalValidation(hospitalReq) != null){
-        //     res.status(400).send(hospitalValidation(hospitalReq))
-        //     if(hospitalReq.cover){
-        //         deleteFile(req.file.path)
-        //     }
-        //     return
-        // }
-        console.log(hospitalReq)
+        if(hospitalValidation(hospitalReq) != null){
+            res.status(400).send(hospitalValidation(hospitalReq))
+            if(hospitalReq.cover){
+                deleteFile(req.file.path)
+            }
+            return
+        }
 
         try {
             let checkSlug = await Hospital.findOne({where: {slug: hospitalReq.slug}})
@@ -147,7 +145,7 @@ module.exports = {
                     slug: hospital.slug,
                     title: hospital.title,
                 },
-                message: 'Hospital Berhasil Ditambah',
+                message: 'Rumah sakit Berhasil Ditambah',
                 request: {
                     method: req.method,
                     url: process.env.BASE_URL + 'hospital'
@@ -158,7 +156,7 @@ module.exports = {
             console.log(err)
             res.status(400).json({
                 error: err.message,
-                message: 'Terjadi kesalahan saat menambah hospital',
+                message: 'Terjadi kesalahan saat menambah rumah sakit',
                 status: false
             })
         }
@@ -167,7 +165,7 @@ module.exports = {
         let hospital = await findHospital(req.params.slug)
         if (hospital == null) {
             res.json({
-                message: 'Hospital tidak ditemukan',
+                message: 'Rumah sakit tidak ditemukan',
                 status: false
             })
             deleteFile(req.file.path)
@@ -185,6 +183,7 @@ module.exports = {
             cover: '',
             igd: req.body.igd,
             ugd: req.body.ugd,
+            icu: req.body.icu,
             vaksin: req.body.vaksin,
             rawatInap: req.body.rawatInap,
             rawatJalan: req.body.rawatJalan,
@@ -215,7 +214,7 @@ module.exports = {
                     id: hospital.id,
                     title: hospital.title,
                 },
-                message: 'Hospital Berhasil Diubah',
+                message: 'Rumah sakit Berhasil Diubah',
                 request: {
                     method: req.method,
                     url: process.env.BASE_URL + 'hospital/' + req.params.slug
@@ -225,7 +224,7 @@ module.exports = {
         } catch (err) {
             res.status(400).json({
                 error: err.message,
-                message: 'Terjadi kesalahan saat mengubah hospital',
+                message: 'Terjadi kesalahan saat mengubah rumah sakit',
                 status: false
             })
         }
@@ -238,7 +237,7 @@ module.exports = {
                 hospital.destroy()
     
                 res.json({
-                    message: 'Hospital Berhasil Dihapus',
+                    message: 'Rumah sakit Berhasil Dihapus',
                     request: {
                         method: req.method,
                         url: process.env.BASE_URL + 'hospital/' + req.params.slug
@@ -248,11 +247,11 @@ module.exports = {
             } catch (err) {
                 res.status(400).json({
                     error: err.message,
-                    message: 'Terjadi kesalahan saat menghapus hospital',
+                    message: 'Terjadi kesalahan saat menghapus rumah sakit',
                     status: false
                 })
             }
-        }else{res.status(404).json({message : 'Hospital tidak ditemukan', status: false})}
+        }else{res.status(404).json({message : 'Rumah sakit tidak ditemukan', status: false})}
     }
 }
 

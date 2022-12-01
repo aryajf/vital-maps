@@ -4,9 +4,6 @@ import axios from 'axios'
 const initialState = {
     hospitals: [],
     hospital: null,
-    isError: false,
-    isSuccess: false,
-    isLoading: false,
     message: ""
 }
 
@@ -50,6 +47,34 @@ export const createHospital = createAsyncThunk("map/createHospital", async(data,
     }
 })
 
+export const editHospital = createAsyncThunk("map/editHospital", async({slug, data}, {rejectWithValue}) => {
+    try {
+        const response = await axios.put(`hospital/${slug}`, data, {
+            headers: {
+                'Content-Type': 'multipart/form-data'
+            }
+        })
+        return response.data
+    } catch (error) {
+        if(error.response){
+            const message = error.response.data.message
+            return rejectWithValue(message)
+        }
+    }
+})
+
+export const deleteHospital = createAsyncThunk("map/deleteHospital", async(slug, {rejectWithValue}) => {
+    try {
+        const response = await axios.delete(`hospital/${slug}`)
+        return response.data
+    } catch (error) {
+        if(error.response){
+            const message = error.response.data.message
+            return rejectWithValue(message)
+        }
+    }
+})
+
 export const mapSlice = createSlice({
     name: 'auth',
     initialState,
@@ -59,48 +84,58 @@ export const mapSlice = createSlice({
     extraReducers: (builder) => {
         // Get Hospitals
         builder.addCase(getHospitals.pending, (state) => {
-            state.isLoading = true
         })
         builder.addCase(getHospitals.fulfilled, (state, action) => {
-            state.isLoading = false
-            state.isSuccess = true
             state.hospitals = action.payload.hospitals
         })
         builder.addCase(getHospitals.rejected, (state, action) => {
-            state.isLoading = false
-            state.isError = true
             state.message = action.payload
         })
 
         // Get Hospital
         builder.addCase(getHospital.pending, (state) => {
-            state.isLoading = true
         })
         builder.addCase(getHospital.fulfilled, (state, action) => {
-            state.isLoading = false
-            state.isSuccess = true
             state.hospital = action.payload.hospital
         })
         builder.addCase(getHospital.rejected, (state, action) => {
-            state.isLoading = false
-            state.isError = true
             state.message = action.payload
         })
 
         // Create Hospital
         builder.addCase(createHospital.pending, (state) => {
-            state.isLoading = true
         })
         builder.addCase(createHospital.fulfilled, (state, action) => {
-            state.isLoading = false
-            state.isSuccess = true
-            notyf.error('Berhasil menambah data')
+            state.message = action.payload
+            notyf.success(state.message)
         })
         builder.addCase(createHospital.rejected, (state, action) => {
-            state.isLoading = false
-            state.isError = true
             state.message = action.payload
-            notyf.error('Gagal menambah data')
+            notyf.error(state.message)
+        })
+
+        // Update Hospital
+        builder.addCase(editHospital.pending, (state) => {
+        })
+        builder.addCase(editHospital.fulfilled, (state, action) => {
+            state.message = action.payload
+            notyf.success(state.message)
+        })
+        builder.addCase(editHospital.rejected, (state, action) => {
+            state.message = action.payload
+            notyf.error(state.message)
+        })
+
+        // Delete Hospital
+        builder.addCase(deleteHospital.pending, (state) => {
+        })
+        builder.addCase(deleteHospital.fulfilled, (state, action) => {
+            state.message = action.payload
+            notyf.success(state.message)
+        })
+        builder.addCase(deleteHospital.rejected, (state, action) => {
+            state.message = action.payload
+            notyf.error(state.message)
         })
     }
 })

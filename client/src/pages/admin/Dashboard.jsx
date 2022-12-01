@@ -13,7 +13,7 @@ const Dashboard = () => {
           <Sidebar />
           <div className="content">
             <div className="recently d-flex flex-column">
-              <h2 className="content-title">Recent Hospital Data</h2>
+              <h2 className="content-title">Halo Selamat Datang</h2>
             </div>
           </div>
         </div>
