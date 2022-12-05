@@ -1,3 +1,5 @@
+require('dotenv').config()
+const {BASE_URL, HOME_URL} = process.env
 const express = require('express');
 const cors = require("cors")
 const path = require('path');
@@ -8,7 +10,7 @@ const routes = require('./routes/index');
 const app = express();
 
 app.use(cors({
-    credentials: true, origin: ['http://localhost:3000', 'http://localhost:2000'],
+    credentials: true, origin: [BASE_URL, HOME_URL],
     methods: ['GET','POST','DELETE','UPDATE','PUT','PATCH']
 }))
 app.use(express.json());
