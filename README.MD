@@ -13,6 +13,7 @@
 
 <p>
 
-[Vital Maps Page](https://vitalmaps.netlify.app)
+[Vital API](https://vitalmaps.digitalinteraktif.com)
+[Vital Maps Page](https://vital-maps.netlify.app)
 
 </p>
