@@ -6,6 +6,7 @@ api/public/users/
 api/public/uploads/
 api/.env
 api/api.zip
+api/package-lock.json
 
 # === GIT IGNORE FOR CLIENT ===
 client/logs
